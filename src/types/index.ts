@@ -23,6 +23,7 @@ type NewsCardProps = {
     content: string;
   };
   index: number;
+  category: string;
 };
 
 type CategoryFilterProps = {
@@ -33,4 +34,17 @@ type CategoryFilterProps = {
 type NewsSummaryProps = {
   title: string;
   content: string;
+};
+
+type SummaryResponse = {
+  summary: string;
+  sources?: Array<{
+    url: string;
+    title?: string;
+  }>;
+  metadata?: {
+    citationTokens: number;
+    numSearchQueries: number;
+    provider: string;
+  };
 };

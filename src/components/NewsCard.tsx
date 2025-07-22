@@ -1,21 +1,11 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Clock, ExternalLink } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Clock, ExternalLink } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { formatDate } from "@/lib/utils";
 
-
-
-const NewsCard = ({ article, index }: NewsCardProps)=> {
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    })
-  }
-
+const NewsCard = ({ article, index, category }: NewsCardProps) => {
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
       <div className="relative">
@@ -33,7 +23,9 @@ const NewsCard = ({ article, index }: NewsCardProps)=> {
             <div className="text-gray-400 text-lg font-medium">No Image</div>
           </div>
         )}
-        <Badge className="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white">{article.source.name}</Badge>
+        <Badge className="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white">
+          {article.source.name}
+        </Badge>
       </div>
 
       <CardHeader className="pb-3">
@@ -51,7 +43,7 @@ const NewsCard = ({ article, index }: NewsCardProps)=> {
 
         <div className="flex gap-2">
           <Link
-            href={`/news/${index}`}
+            href={`/news/${index}?category=${category}`}
             className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors text-center"
           >
             Read More & Summarize
@@ -67,7 +59,7 @@ const NewsCard = ({ article, index }: NewsCardProps)=> {
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 export default NewsCard;
