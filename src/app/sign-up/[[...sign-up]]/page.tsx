@@ -1,25 +1,11 @@
-"use client"
+"use client";
 
-import { SignUp } from "@clerk/nextjs"
-import { Newspaper, Star } from "lucide-react"
-import Link from "next/link"
+import { signuptestimonials } from "@/constants";
+import { SignUp } from "@clerk/nextjs";
+import { Newspaper, Star } from "lucide-react";
+import Link from "next/link";
 
-export default function SignUpPage() {
-  const testimonials = [
-    {
-      name: "Sarah Chen",
-      role: "Business Analyst",
-      content: "This app saves me hours every day. The AI summaries are incredibly accurate!",
-      rating: 5,
-    },
-    {
-      name: "Mike Rodriguez",
-      role: "Tech Journalist",
-      content: "Finally, a news app that understands what I need. The categorization is perfect.",
-      rating: 5,
-    },
-  ]
-
+const SignUpPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
       {/* Background Animation */}
@@ -43,8 +29,10 @@ export default function SignUpPage() {
                   headerSubtitle: "text-gray-600",
                   socialButtonsBlockButton:
                     "border-2 border-gray-200 hover:border-gray-300 text-gray-700 hover:bg-gray-50",
-                  formFieldInput: "border-2 border-gray-200 focus:border-blue-500 rounded-lg",
-                  footerActionLink: "text-blue-600 hover:text-blue-700 font-semibold",
+                  formFieldInput:
+                    "border-2 border-gray-200 focus:border-blue-500 rounded-lg",
+                  footerActionLink:
+                    "text-blue-600 hover:text-blue-700 font-semibold",
                 },
               }}
               redirectUrl="/"
@@ -54,7 +42,10 @@ export default function SignUpPage() {
 
         {/* Right Side - Branding & Social Proof */}
         <div className="text-center lg:text-left order-1 lg:order-2">
-          <Link href="/landing" className="inline-flex items-center gap-3 mb-8 group">
+          <Link
+            href="/landing"
+            className="inline-flex items-center gap-3 mb-8 group"
+          >
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300">
               <Newspaper className="w-8 h-8 text-white" />
             </div>
@@ -71,7 +62,8 @@ export default function SignUpPage() {
           </h1>
 
           <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            Create your account and start experiencing the future of news consumption with AI-powered insights.
+            Create your account and start experiencing the future of news
+            consumption with AI-powered insights.
           </p>
 
           {/* Stats */}
@@ -92,17 +84,29 @@ export default function SignUpPage() {
 
           {/* Testimonials */}
           <div className="space-y-4">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+            {signuptestimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/20"
+              >
                 <div className="flex mb-2">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star
+                      key={i}
+                      className="w-4 h-4 text-yellow-400 fill-current"
+                    />
                   ))}
                 </div>
-                <p className="text-gray-700 text-sm italic mb-2">"{testimonial.content}"</p>
+                <p className="text-gray-700 text-sm italic mb-2">
+                  "{testimonial.content}"
+                </p>
                 <div>
-                  <div className="font-semibold text-gray-900 text-sm">{testimonial.name}</div>
-                  <div className="text-xs text-gray-600">{testimonial.role}</div>
+                  <div className="font-semibold text-gray-900 text-sm">
+                    {testimonial.name}
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    {testimonial.role}
+                  </div>
                 </div>
               </div>
             ))}
@@ -110,5 +114,7 @@ export default function SignUpPage() {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default SignUpPage;

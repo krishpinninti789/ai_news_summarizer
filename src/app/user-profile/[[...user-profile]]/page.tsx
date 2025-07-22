@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { UserProfile } from "@clerk/nextjs"
-import { Newspaper, ArrowLeft } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { UserProfile } from "@clerk/nextjs";
+import { Newspaper, ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-export default function UserProfilePage() {
+const UserProfilePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Header */}
@@ -49,5 +49,7 @@ export default function UserProfilePage() {
         </div>
       </main>
     </div>
-  )
-}
+  );
+};
+
+export default UserProfilePage;

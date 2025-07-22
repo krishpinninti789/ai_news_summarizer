@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { SignIn } from "@clerk/nextjs"
-import { Newspaper, Sparkles, CheckCircle } from "lucide-react"
-import Link from "next/link"
+import { SignIn } from "@clerk/nextjs";
+import { Newspaper, Sparkles, CheckCircle } from "lucide-react";
+import Link from "next/link";
 
-export default function SignInPage() {
+const SignInPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
       {/* Background Animation */}
@@ -17,7 +17,10 @@ export default function SignInPage() {
       <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Side - Branding & Features */}
         <div className="text-center lg:text-left">
-          <Link href="/landing" className="inline-flex items-center gap-3 mb-8 group">
+          <Link
+            href="/landing"
+            className="inline-flex items-center gap-3 mb-8 group"
+          >
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300">
               <Newspaper className="w-8 h-8 text-white" />
             </div>
@@ -34,14 +37,17 @@ export default function SignInPage() {
           </h1>
 
           <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            Join thousands of users who stay informed with AI-powered news summaries from trusted sources worldwide.
+            Join thousands of users who stay informed with AI-powered news
+            summaries from trusted sources worldwide.
           </p>
 
           {/* Features List */}
           <div className="bg-white/60 backdrop-blur-sm p-6 rounded-2xl border border-white/20 shadow-lg">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-6 h-6 text-blue-600" />
-              <span className="font-semibold text-gray-800 text-lg">What you'll get:</span>
+              <span className="font-semibold text-gray-800 text-lg">
+                What you'll get:
+              </span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
@@ -52,7 +58,10 @@ export default function SignInPage() {
                 "Advanced search capabilities",
                 "Bookmark favorite articles",
               ].map((feature, index) => (
-                <div key={index} className="flex items-center gap-3 text-gray-700">
+                <div
+                  key={index}
+                  className="flex items-center gap-3 text-gray-700"
+                >
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
                   <span className="text-sm font-medium">{feature}</span>
                 </div>
@@ -74,8 +83,10 @@ export default function SignInPage() {
                   headerSubtitle: "text-gray-600",
                   socialButtonsBlockButton:
                     "border-2 border-gray-200 hover:border-gray-300 text-gray-700 hover:bg-gray-50",
-                  formFieldInput: "border-2 border-gray-200 focus:border-blue-500 rounded-lg",
-                  footerActionLink: "text-blue-600 hover:text-blue-700 font-semibold",
+                  formFieldInput:
+                    "border-2 border-gray-200 focus:border-blue-500 rounded-lg",
+                  footerActionLink:
+                    "text-blue-600 hover:text-blue-700 font-semibold",
                 },
               }}
               redirectUrl="/"
@@ -84,5 +95,7 @@ export default function SignInPage() {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default SignInPage;

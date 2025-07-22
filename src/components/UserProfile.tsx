@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { UserButton, useUser } from "@clerk/nextjs"
-import { Badge } from "@/components/ui/badge"
-import { Loader2, Crown } from "lucide-react"
+import { UserButton, useUser } from "@clerk/nextjs";
+import { Badge } from "@/components/ui/badge";
+import { Loader2, Crown } from "lucide-react";
 
-export function UserProfile() {
-  const { user, isLoaded } = useUser()
+const UserProfile = () => {
+  const { user, isLoaded } = useUser();
 
   if (!isLoaded) {
     return (
@@ -15,11 +15,11 @@ export function UserProfile() {
           <div className="h-4 bg-gray-200 rounded w-20 animate-pulse"></div>
         </div>
       </div>
-    )
+    );
   }
 
   if (!user) {
-    return null
+    return null;
   }
 
   const getInitials = (name: string) => {
@@ -28,8 +28,8 @@ export function UserProfile() {
       .map((word) => word[0])
       .join("")
       .toUpperCase()
-      .slice(0, 2)
-  }
+      .slice(0, 2);
+  };
 
   return (
     <div className="flex items-center gap-3">
@@ -39,12 +39,17 @@ export function UserProfile() {
           <p className="text-sm font-semibold text-gray-900">
             {user.firstName} {user.lastName}
           </p>
-          <Badge variant="outline" className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 text-blue-700">
+          <Badge
+            variant="outline"
+            className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 text-blue-700"
+          >
             <Crown className="w-3 h-3 mr-1" />
             Pro
           </Badge>
         </div>
-        <p className="text-xs text-gray-500">{user.emailAddresses[0]?.emailAddress}</p>
+        <p className="text-xs text-gray-500">
+          {user.emailAddresses[0]?.emailAddress}
+        </p>
       </div>
 
       {/* Custom Avatar with UserButton */}
@@ -52,8 +57,10 @@ export function UserProfile() {
         <UserButton
           appearance={{
             elements: {
-              avatarBox: "w-10 h-10 rounded-full ring-2 ring-blue-100 hover:ring-blue-200 transition-all duration-200",
-              userButtonPopoverCard: "bg-white/95 backdrop-blur-sm border border-gray-200 shadow-xl",
+              avatarBox:
+                "w-10 h-10 rounded-full ring-2 ring-blue-100 hover:ring-blue-200 transition-all duration-200",
+              userButtonPopoverCard:
+                "bg-white/95 backdrop-blur-sm border border-gray-200 shadow-xl",
               userButtonPopoverActionButton: "hover:bg-blue-50 text-gray-700",
               userButtonPopoverActionButtonText: "text-sm",
               userButtonPopoverFooter: "hidden",
@@ -67,5 +74,7 @@ export function UserProfile() {
         <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default UserProfile;

@@ -1,14 +1,14 @@
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-import { Newspaper } from 'lucide-react'
-import Link from 'next/link'
-import React from 'react'
-import { Button } from '../ui/button'
-import { UserProfile } from '../UserProfile'
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Newspaper } from "lucide-react";
+import Link from "next/link";
+import React from "react";
+import { Button } from "../ui/button";
+import UserProfile from "../UserProfile";
 
 const Header = () => {
   return (
     <div>
-        <nav className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+      <nav className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center gap-3">
@@ -30,14 +30,13 @@ const Header = () => {
                   </Button>
                 </Link>
               </SignedOut>
-              <SignedIn >
+              <SignedIn>
                 <Link href="/explore">
                   <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                     Go to Dashboard
                   </Button>
                 </Link>
                 <div className="flex items-center gap-6">
-                  
                   <UserProfile />
                 </div>
               </SignedIn>
@@ -46,7 +45,7 @@ const Header = () => {
         </div>
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

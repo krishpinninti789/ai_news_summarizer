@@ -1,23 +1,10 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
+import { categories } from "@/constants"
 
-interface CategoryFilterProps {
-  selectedCategory: string
-  onCategoryChange: (category: string) => void
-}
 
-const categories = [
-  { id: "general", name: "General", icon: "📰" },
-  { id: "business", name: "Business", icon: "💼" },
-  { id: "technology", name: "Technology", icon: "💻" },
-  { id: "science", name: "Science", icon: "🔬" },
-  { id: "health", name: "Health", icon: "🏥" },
-  { id: "sports", name: "Sports", icon: "⚽" },
-  { id: "entertainment", name: "Entertainment", icon: "🎬" },
-]
-
-export function CategoryFilter({ selectedCategory, onCategoryChange }: CategoryFilterProps) {
+const CategoryFilter = ({ selectedCategory, onCategoryChange }: CategoryFilterProps)=> {
   return (
     <div className="flex flex-wrap gap-2 mb-8">
       {categories.map((category) => (
@@ -38,3 +25,5 @@ export function CategoryFilter({ selectedCategory, onCategoryChange }: CategoryF
     </div>
   )
 }
+
+export default CategoryFilter;

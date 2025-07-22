@@ -1,22 +1,17 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Sparkles, Loader2 } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Sparkles, Loader2 } from "lucide-react";
 
-interface NewsSummaryProps {
-  title: string
-  content: string
-}
-
-const NewsSummary = ({ title, content }: NewsSummaryProps)=> {
-  const [summary, setSummary] = useState<string>("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [hasGenerated, setHasGenerated] = useState(false)
+const NewsSummary = ({ title, content }: NewsSummaryProps) => {
+  const [summary, setSummary] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasGenerated, setHasGenerated] = useState(false);
 
   const generateSummary = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
       const response = await fetch("/api/summarize", {
         method: "POST",
@@ -24,22 +19,22 @@ const NewsSummary = ({ title, content }: NewsSummaryProps)=> {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ title, content }),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error("Failed to generate summary")
+        throw new Error("Failed to generate summary");
       }
 
-      const data = await response.json()
-      setSummary(data.summary)
-      setHasGenerated(true)
+      const data = await response.json();
+      setSummary(data.summary);
+      setHasGenerated(true);
     } catch (error) {
-      console.error("Error generating summary:", error)
-      setSummary("Failed to generate summary. Please try again.")
+      console.error("Error generating summary:", error);
+      setSummary("Failed to generate summary. Please try again.");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <Card className="mt-6">
@@ -52,7 +47,9 @@ const NewsSummary = ({ title, content }: NewsSummaryProps)=> {
       <CardContent>
         {!hasGenerated ? (
           <div className="text-center py-6">
-            <p className="text-gray-600 mb-4">Get an AI-powered summary of this article in key bullet points</p>
+            <p className="text-gray-600 mb-4">
+              Get an AI-powered summary of this article in key bullet points
+            </p>
             <Button
               onClick={generateSummary}
               disabled={isLoading}
@@ -74,7 +71,9 @@ const NewsSummary = ({ title, content }: NewsSummaryProps)=> {
         ) : (
           <div className="space-y-3">
             <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-lg border border-purple-200">
-              <div className="whitespace-pre-line text-gray-800 leading-relaxed">{summary}</div>
+              <div className="whitespace-pre-line text-gray-800 leading-relaxed">
+                {summary}
+              </div>
             </div>
             <Button
               onClick={generateSummary}
@@ -96,7 +95,7 @@ const NewsSummary = ({ title, content }: NewsSummaryProps)=> {
         )}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 export default NewsSummary;

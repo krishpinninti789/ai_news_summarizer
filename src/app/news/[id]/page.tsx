@@ -1,66 +1,45 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useParams, useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
-import { ArrowLeft, Clock, ExternalLink, Newspaper } from "lucide-react"
-import Image from "next/image"
-import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs"
+import { ArrowLeft, Clock, ExternalLink, Newspaper } from "lucide-react";
+import Image from "next/image";
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 
-import NewsSummary from "@/components/NewsSummary"
-import { UserProfile } from "@/components/UserProfile"
+import NewsSummary from "@/components/NewsSummary";
+import UserProfile from "@/components/UserProfile";
+import { formatDate } from "@/lib/utils";
 
-interface Article {
-  title: string
-  description: string
-  urlToImage: string
-  publishedAt: string
-  source: {
-    name: string
-  }
-  url: string
-  content: string
-}
-
-export default function NewsDetailPage() {
-  const params = useParams()
-  const router = useRouter()
-  const [article, setArticle] = useState<Article | null>(null)
-  const [loading, setLoading] = useState(true)
+const NewsDetailPage = () => {
+  const params = useParams();
+  const router = useRouter();
+  const [article, setArticle] = useState<Article | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        // In a real app, you'd fetch the specific article by ID
-        // For this demo, we'll fetch all articles and get the one by index
-        const response = await fetch("/api/news")
-        const data = await response.json()
+        const response = await fetch("/api/news");
+        const data = await response.json();
 
-        if (data.articles && data.articles[Number.parseInt(params.id as string)]) {
-          setArticle(data.articles[Number.parseInt(params.id as string)])
+        if (
+          data.articles &&
+          data.articles[Number.parseInt(params.id as string)]
+        ) {
+          setArticle(data.articles[Number.parseInt(params.id as string)]);
         }
       } catch (error) {
-        console.error("Error fetching article:", error)
+        console.error("Error fetching article:", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchArticle()
-  }, [params.id])
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    })
-  }
+    fetchArticle();
+  }, [params.id]);
 
   if (loading) {
     return (
@@ -70,21 +49,23 @@ export default function NewsDetailPage() {
           <p className="text-gray-600">Loading article...</p>
         </div>
       </div>
-    )
+    );
   }
 
   if (!article) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Article not found</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            Article not found
+          </h2>
           <Button onClick={() => router.back()}>
             <ArrowLeft className="w-4 h-4 mr-2" />
             Go Back
           </Button>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -102,7 +83,6 @@ export default function NewsDetailPage() {
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to News
                 </Button>
-                <UserProfile />
               </div>
             </div>
           </header>
@@ -113,31 +93,38 @@ export default function NewsDetailPage() {
               {/* Article Image */}
               {article.urlToImage && (
                 <div className="relative h-64 md:h-96">
-                  <Image
+                  <img
                     src={article.urlToImage || "/placeholder.svg"}
                     alt={article.title}
-                    fill
-                    className="object-cover"
+                    className="object-fill"
                     crossOrigin="anonymous"
                   />
                 </div>
               )}
 
-              <div className="p-6 md:p-8">
+              <div className="p-6 mt-2 md:mt-10 lg:mt-18 md:p-8">
                 {/* Article Meta */}
-                <div className="flex flex-wrap items-center gap-4 mb-6">
-                  <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">{article.source.name}</Badge>
+                <div className="flex flex-wrap items-center gap-4 mb-6 mt-1 md:mt-1">
+                  <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+                    {article.source.name}
+                  </Badge>
                   <div className="flex items-center gap-2 text-gray-500">
                     <Clock className="w-4 h-4" />
-                    <span className="text-sm">{formatDate(article.publishedAt)}</span>
+                    <span className="text-sm">
+                      {formatDate(article.publishedAt)}
+                    </span>
                   </div>
                 </div>
 
                 {/* Article Title */}
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">{article.title}</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                  {article.title}
+                </h1>
 
                 {/* Article Description */}
-                <p className="text-xl text-gray-700 mb-8 leading-relaxed">{article.description}</p>
+                <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                  {article.description}
+                </p>
 
                 {/* Article Content */}
                 {article.content && (
@@ -162,12 +149,17 @@ export default function NewsDetailPage() {
                 </div>
 
                 {/* AI Summary Section */}
-                <NewsSummary title={article.title} content={article.content || article.description} />
+                <NewsSummary
+                  title={article.title}
+                  content={article.content || article.description}
+                />
               </div>
             </article>
           </main>
         </div>
       </SignedIn>
     </>
-  )
-}
+  );
+};
+
+export default NewsDetailPage;

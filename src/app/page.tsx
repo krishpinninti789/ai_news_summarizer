@@ -1,28 +1,39 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Newspaper, Sparkles, Zap, Clock, Brain, TrendingUp, Star, ArrowRight, Play } from "lucide-react"
-import Link from "next/link"
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
-import { testimonials } from "@/constants"
-import Header from "@/components/shared/Header"
-import Footer from "@/components/shared/Footer"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Newspaper,
+  Sparkles,
+  Zap,
+  Clock,
+  Brain,
+  TrendingUp,
+  Star,
+  ArrowRight,
+  Play,
+} from "lucide-react";
+import Link from "next/link";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { testimonials } from "@/constants";
+import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/Footer";
 
-export default function LandingPage() {
-  const [isVisible, setIsVisible] = useState(false)
+const LandingPage = () => {
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true)
-  }, [])
+    setIsVisible(true);
+  }, []);
 
   const features = [
     {
       icon: <Brain className="w-8 h-8" />,
       title: "AI-Powered Summaries",
-      description: "Get instant, intelligent summaries of any news article using advanced GPT-4 technology",
+      description:
+        "Get instant, intelligent summaries of any news article using advanced GPT-4 technology",
     },
     {
       icon: <Zap className="w-8 h-8" />,
@@ -32,27 +43,28 @@ export default function LandingPage() {
     {
       icon: <TrendingUp className="w-8 h-8" />,
       title: "Multiple Categories",
-      description: "Stay updated across Business, Tech, Science, Sports, and more",
+      description:
+        "Stay updated across Business, Tech, Science, Sports, and more",
     },
     {
       icon: <Clock className="w-8 h-8" />,
       title: "Real-time Updates",
-      description: "Fresh news delivered instantly from trusted sources worldwide",
+      description:
+        "Fresh news delivered instantly from trusted sources worldwide",
     },
-  ]
-
-
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      
-      
-
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
-            className={`text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            className={`text-center transition-all duration-1000 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
           >
             <Badge className="mb-6 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 border-blue-200 px-4 py-2">
               <Sparkles className="w-4 h-4 mr-2" />
@@ -67,8 +79,9 @@ export default function LandingPage() {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Transform how you consume news with intelligent summaries, real-time updates, and personalized insights
-              from trusted sources worldwide.
+              Transform how you consume news with intelligent summaries,
+              real-time updates, and personalized insights from trusted sources
+              worldwide.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -94,7 +107,11 @@ export default function LandingPage() {
                   </Button>
                 </Link>
               </SignedIn>
-              <Button size="lg" variant="outline" className="px-8 py-4 text-lg border-2 bg-transparent">
+              <Button
+                size="lg"
+                variant="outline"
+                className="px-8 py-4 text-lg border-2 bg-transparent"
+              >
                 <Play className="w-5 h-5 mr-2" />
                 Watch Demo
               </Button>
@@ -127,9 +144,12 @@ export default function LandingPage() {
       <section className="py-20 bg-white/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose NewsGist?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Why Choose NewsGist?
+            </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Experience the future of news consumption with cutting-edge AI technology
+              Experience the future of news consumption with cutting-edge AI
+              technology
             </p>
           </div>
 
@@ -143,8 +163,12 @@ export default function LandingPage() {
                   <div className="bg-gradient-to-r from-blue-100 to-purple-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <div className="text-blue-600">{feature.icon}</div>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {feature.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -156,8 +180,12 @@ export default function LandingPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
-            <p className="text-xl text-gray-600">Simple, fast, and intelligent</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              How It Works
+            </h2>
+            <p className="text-xl text-gray-600">
+              Simple, fast, and intelligent
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -166,21 +194,27 @@ export default function LandingPage() {
                 1
               </div>
               <h3 className="text-xl font-semibold mb-3">Browse Categories</h3>
-              <p className="text-gray-600">Choose from multiple news categories that interest you most</p>
+              <p className="text-gray-600">
+                Choose from multiple news categories that interest you most
+              </p>
             </div>
             <div className="text-center">
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
                 2
               </div>
               <h3 className="text-xl font-semibold mb-3">Select Articles</h3>
-              <p className="text-gray-600">Click on any article that catches your attention</p>
+              <p className="text-gray-600">
+                Click on any article that catches your attention
+              </p>
             </div>
             <div className="text-center">
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
                 3
               </div>
               <h3 className="text-xl font-semibold mb-3">Get AI Summary</h3>
-              <p className="text-gray-600">Receive instant, intelligent summaries in bullet points</p>
+              <p className="text-gray-600">
+                Receive instant, intelligent summaries in bullet points
+              </p>
             </div>
           </div>
         </div>
@@ -190,23 +224,39 @@ export default function LandingPage() {
       <section className="py-20 bg-gradient-to-r from-blue-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Users Say</h2>
-            <p className="text-xl text-gray-600">Join thousands of satisfied readers</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              What Our Users Say
+            </h2>
+            <p className="text-xl text-gray-600">
+              Join thousands of satisfied readers
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+              <Card
+                key={index}
+                className="bg-white/80 backdrop-blur-sm border-0 shadow-lg"
+              >
                 <CardContent className="p-6">
                   <div className="flex mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      <Star
+                        key={i}
+                        className="w-5 h-5 text-yellow-400 fill-current"
+                      />
                     ))}
                   </div>
-                  <p className="text-gray-700 mb-4 italic">"{testimonial.content}"</p>
+                  <p className="text-gray-700 mb-4 italic">
+                    "{testimonial.content}"
+                  </p>
                   <div>
-                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.role}</div>
+                    <div className="font-semibold text-gray-900">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      {testimonial.role}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -218,14 +268,20 @@ export default function LandingPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your News Experience?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to Transform Your News Experience?
+          </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of users who are already staying informed with AI-powered news summaries
+            Join thousands of users who are already staying informed with
+            AI-powered news summaries
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <SignedOut>
               <Link href="/sign-up">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
+                <Button
+                  size="lg"
+                  className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+                >
                   Get Started Free
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -233,7 +289,10 @@ export default function LandingPage() {
             </SignedOut>
             <SignedIn>
               <Link href="/">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
+                <Button
+                  size="lg"
+                  className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+                >
                   Go to Dashboard
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -251,8 +310,8 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      
     </div>
-  )
-}
+  );
+};
+
+export default LandingPage;
