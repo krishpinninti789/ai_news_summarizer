@@ -6,7 +6,10 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Newspaper, Sparkles, Zap, Clock, Brain, TrendingUp, Star, ArrowRight, Play } from "lucide-react"
 import Link from "next/link"
-import { SignedIn, SignedOut } from "@clerk/nextjs"
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
+import { testimonials } from "@/constants"
+import Header from "@/components/shared/Header"
+import Footer from "@/components/shared/Footer"
 
 export default function LandingPage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -38,63 +41,12 @@ export default function LandingPage() {
     },
   ]
 
-  const testimonials = [
-    {
-      name: "Sarah Chen",
-      role: "Business Analyst",
-      content: "This app saves me hours every day. The AI summaries are incredibly accurate!",
-      rating: 5,
-    },
-    {
-      name: "Mike Rodriguez",
-      role: "Tech Journalist",
-      content: "Finally, a news app that understands what I need. The categorization is perfect.",
-      rating: 5,
-    },
-    {
-      name: "Dr. Emily Watson",
-      role: "Research Scientist",
-      content: "The science news summaries help me stay current without information overload.",
-      rating: 5,
-    },
-  ]
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl">
-                <Newspaper className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                AI News Summarizer
-              </span>
-            </div>
-            <div className="flex items-center gap-4">
-              <SignedOut>
-                <Link href="/sign-in">
-                  <Button variant="ghost">Sign In</Button>
-                </Link>
-                <Link href="/sign-up">
-                  <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                    Get Started
-                  </Button>
-                </Link>
-              </SignedOut>
-              <SignedIn>
-                <Link href="/">
-                  <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                    Go to Dashboard
-                  </Button>
-                </Link>
-              </SignedIn>
-            </div>
-          </div>
-        </div>
-      </nav>
+      
+      
 
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 lg:py-32">
@@ -175,7 +127,7 @@ export default function LandingPage() {
       <section className="py-20 bg-white/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose AI News Summarizer?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose NewsGist?</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Experience the future of news consumption with cutting-edge AI technology
             </p>
@@ -300,20 +252,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-3 mb-4 md:mb-0">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl">
-                <Newspaper className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold">AI News Summarizer</span>
-            </div>
-            <div className="text-gray-400">© 2024 AI News Summarizer. All rights reserved.</div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   )
 }
