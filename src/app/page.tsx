@@ -73,7 +73,7 @@ const LandingPage = () => {
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
               Stay Informed with
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">
+              <span className="bg-blue-600 bg-clip-text text-transparent block">
                 AI-Powered News
               </span>
             </h1>
@@ -97,10 +97,10 @@ const LandingPage = () => {
                 </Link>
               </SignedOut>
               <SignedIn>
-                <Link href="/">
+                <Link href="/explore">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 text-lg"
+                    className="bg-blue-600 hover:bg-blue-700 px-8 py-4 text-lg"
                   >
                     Go to Dashboard
                     <ArrowRight className="w-5 h-5 ml-2" />
@@ -190,7 +190,7 @@ const LandingPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
+              <div className="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
                 1
               </div>
               <h3 className="text-xl font-semibold mb-3">Browse Categories</h3>
@@ -199,7 +199,7 @@ const LandingPage = () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
+              <div className="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
                 2
               </div>
               <h3 className="text-xl font-semibold mb-3">Select Articles</h3>
@@ -208,7 +208,7 @@ const LandingPage = () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
+              <div className="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
                 3
               </div>
               <h3 className="text-xl font-semibold mb-3">Get AI Summary</h3>
@@ -266,7 +266,7 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-20 bg-blue-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Transform Your News Experience?
@@ -288,7 +288,7 @@ const LandingPage = () => {
               </Link>
             </SignedOut>
             <SignedIn>
-              <Link href="/">
+              <Link href="/explore">
                 <Button
                   size="lg"
                   className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"

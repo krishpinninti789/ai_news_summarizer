@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Clock, ExternalLink, Newspaper } from "lucide-react";
 import Image from "next/image";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
-import UserProfile from "@/components/UserProfile";
+
 import NewsSummary from "@/components/NewsSummary";
 
 export default function NewsDetailPage() {

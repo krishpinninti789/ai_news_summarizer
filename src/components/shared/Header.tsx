@@ -12,10 +12,10 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl">
+              <div className="bg-blue-600 p-2 rounded-xl">
                 <Newspaper className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-blue-600 bg-clip-text text-transparent">
                 NewsGist
               </span>
             </div>
@@ -25,14 +25,14 @@ const Header = () => {
                   <Button variant="ghost">Sign In</Button>
                 </Link>
                 <Link href="/sign-up">
-                  <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                  <Button className="bg-blue-600 hover:bg-blue-700">
                     Get Started
                   </Button>
                 </Link>
               </SignedOut>
               <SignedIn>
                 <Link href="/explore">
-                  <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                  <Button className="bg-blue-600 cursor-pointer hover:bg-blue-700">
                     Go to Dashboard
                   </Button>
                 </Link>

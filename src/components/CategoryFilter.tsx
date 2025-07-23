@@ -19,8 +19,8 @@ const CategoryFilter = ({
             variant={selectedCategory === category.id ? "default" : "outline"}
             className={`cursor-pointer px-4 py-3 text-sm font-medium transition-all duration-200 hover:scale-105 active:scale-95 ${
               selectedCategory === category.id
-                ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg"
-                : "hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 bg-white border-gray-300"
+                ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg"
+                : "hover:bg-blue-50 hover:text-blue-700 bg-white border-gray-300"
             }`}
             onClick={() => onCategoryChange(category.id)}
           >
