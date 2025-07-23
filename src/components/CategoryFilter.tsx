@@ -3,10 +3,10 @@
 import { Badge } from "@/components/ui/badge";
 import { categories } from "@/constants";
 
-export function CategoryFilter({
+const CategoryFilter = ({
   selectedCategory,
   onCategoryChange,
-}: CategoryFilterProps) {
+}: CategoryFilterProps) => {
   return (
     <div className="mb-8">
       <h3 className="text-lg font-semibold text-gray-800 mb-4">
@@ -34,4 +34,6 @@ export function CategoryFilter({
       </div>
     </div>
   );
-}
+};
+
+export default CategoryFilter;

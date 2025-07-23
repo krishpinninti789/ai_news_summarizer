@@ -7,21 +7,9 @@ import { Loader2, Newspaper, Sparkles } from "lucide-react";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 
 import NewsCard from "@/components/NewsCard";
-import { CategoryFilter } from "@/components/CategoryFilter";
+import CategoryFilter from "@/components/CategoryFilter";
 
-interface Article {
-  title: string;
-  description: string;
-  urlToImage: string;
-  publishedAt: string;
-  source: {
-    name: string;
-  };
-  url: string;
-  content: string;
-}
-
-export default function HomePage() {
+const HomePage = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
@@ -166,4 +154,6 @@ export default function HomePage() {
       </SignedIn>
     </>
   );
-}
+};
+
+export default HomePage;

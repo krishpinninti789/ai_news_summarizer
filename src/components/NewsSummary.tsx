@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Loader2, ExternalLink, Search, Zap } from "lucide-react";
 
-export function NewsSummary({ title, content }: NewsSummaryProps) {
+const NewsSummary = ({ title, content }: NewsSummaryProps) => {
   const [summaryData, setSummaryData] = useState<SummaryResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasGenerated, setHasGenerated] = useState(false);
@@ -176,4 +176,6 @@ export function NewsSummary({ title, content }: NewsSummaryProps) {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default NewsSummary;

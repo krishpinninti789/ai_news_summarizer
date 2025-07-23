@@ -4,25 +4,12 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-// import { EnhancedNewsSummary } from "@/components/enhanced-news-summary"
+
 import { ArrowLeft, Clock, ExternalLink, Newspaper } from "lucide-react";
 import Image from "next/image";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 import UserProfile from "@/components/UserProfile";
-import { NewsSummary } from "@/components/NewsSummary";
-// import { UserProfile } from "@/components/user-profile"
-
-interface Article {
-  title: string;
-  description: string;
-  urlToImage: string;
-  publishedAt: string;
-  source: {
-    name: string;
-  };
-  url: string;
-  content: string;
-}
+import NewsSummary from "@/components/NewsSummary";
 
 export default function NewsDetailPage() {
   const params = useParams();
@@ -157,7 +144,6 @@ export default function NewsDetailPage() {
                       currentCategory.slice(1)}
                   </Badge>
                 </div>
-                <UserProfile />
               </div>
             </div>
           </header>
