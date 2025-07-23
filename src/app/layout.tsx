@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,8 +27,9 @@ export default function RootLayout({
         <head>
           <meta name="theme-color" content="#FFFFFF" />
         </head>
-
-        <body className={inter.className}>{children}</body>
+        <Suspense>
+          <body className={inter.className}>{children}</body>
+        </Suspense>
       </html>
       <Footer />
     </ClerkProvider>
