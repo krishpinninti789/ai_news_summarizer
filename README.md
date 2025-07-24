@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+ 📰 NewsGist – AI-Powered News Summarizer
+
+NewsGist is a modern web application that provides daily news summaries categorized by topics such as General, Technology, Business, Social, and Entertainment. Powered by AI via Perplexity and Model Context Protocol, it offers clean, concise, and insightful news digests for smarter reading.
+
+
+## 🚀 Features
+
+- 📢 Real-time News Fetching via News API
+- 🧠 AI-Powered Summarization with Perplexity & OpenAI
+- 📚 Categorized News (General, Technology, Business, Social, Entertainment)
+- 🧩 MCP (Model Context Protocol) for better context understanding
+- 👤 User Authentication via Clerk
+- 🌙 Dark/Light Theme Toggle
+- 🧼 Clean UI using shadcn/ui and Tailwind CSS
+
+---
+
+## 🛠 Tech Stack
+
+| Frontend | Backend | AI & NLP | Auth |
+|----------|---------|----------|------|
+| Next.js 15  | Perplexity AI | Clerk |
+| Tailwind CSS | Edge Runtime | OpenAI / Perplexity SDK | Clerk SDK |
+| shadcn/ui | Model Context Protocol |  
+
+---
+
+## 📂 Project Structure
+
+/app ├── explore/         # News by category ├── summary/         # AI summaries └── api/             # News + AI endpoints /components ├── ui/              # Shadcn UI components ├── cards/           # News summary cards └── layout/          # Navbar, sidebar, etc. /lib ├── news.actions.ts  # Fetch and summarize logic └── ai.ts            # Perplexity + MCP interaction /types └── index.ts         # Type definitions
+
+---
+
+## 🧪 Getting Started
+
+### 1. Clone the Repo
 
 ```bash
+git clone https://github.com/your-username/newsgist.git
+cd newsgist
+
+2. Install Dependencies
+
+npm install
+
+3. Set Up Environment Variables
+
+Create a .env.local file:
+
+NEWS_API_KEY=your_news_api_key
+PERPLEXITY_API_KEY=your_perplexity_api_key
+CLERK_PUBLISHABLE_KEY=your_clerk_key
+CLERK_SECRET_KEY=your_clerk_secret
+
+4. Run Locally
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+🤖 AI Summarization Flow
 
-To learn more about Next.js, take a look at the following resources:
+1. News articles are fetched from NewsAPI.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Each article's content is sent to the AI layer.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. AI generates:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Concise summaries
+
+Highlight points
+
+Cause-effect or social/business implications
+
+
+
+4. Output is rendered in clean cards via shadcn UI.
+
+
+
+
+---
+
+📦 Future Improvements
+
+[ ] Bookmark / Save articles
+
+[ ] Share to social platforms
+
+[ ] Personalized recommendations
+
+[ ] Voice-assisted reading
+
+[ ] Native mobile app
+
+
+
+---
+
+📜 License
+
+This project is licensed under MIT.
+
+
+---
+
+🙌 Acknowledgements
+
+NewsAPI.org
+
+Perplexity AI
+
+shadcn/ui
+
+Clerk.dev
+
+OpenAI
+
+
+
+---
+
+> Built with ❤️ using Next.js + AI to help you stay informed, faster by KrishnaVamsi Pinninti.
+
+💬contact-krishpinninti789@gmail.com
+
+---
+
+
+
