@@ -7,7 +7,14 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 import { Suspense } from "react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";import { Plus_Jakarta_Sans } from "next/font/google";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], // pick weights you need
+  variable: "--font-plus-jakarta-sans",
+});
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +36,7 @@ export default function RootLayout({
           <meta name="theme-color" content="#FFFFFF" />
         </head>
         <Suspense>
-          <body className={inter.className}>
+          <body className={plusJakartaSans.variable}>
             {children}
             <SpeedInsights />
           </body>
