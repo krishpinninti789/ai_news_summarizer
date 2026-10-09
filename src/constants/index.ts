@@ -57,3 +57,36 @@ export const categories = [
 ];
 
 export const NEWS_API_URL = "https://newsapi.org/v2";
+
+export const HomePagecategories = [
+  "Technology",
+  "Business",
+  "Science",
+  "Culture",
+  "Sports",
+  "World",
+];
+
+export const features = [
+  {
+    number: "01",
+    eyebrow: "Clarity",
+    title: "Signal, not noise",
+    text: "A concise brief that keeps the context, the tension, and the details worth knowing.",
+    visual: "line",
+  },
+  {
+    number: "02",
+    eyebrow: "Focus",
+    title: "Your time is yours",
+    text: "Move from headline to informed in under two minutes. No clickbait rabbit holes.",
+    visual: "bars",
+  },
+  {
+    number: "03",
+    eyebrow: "Perspective",
+    title: "Many angles, one view",
+    text: "See stories across categories and trusted sources without opening twenty tabs.",
+    visual: "orbit",
+  },
+];
