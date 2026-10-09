@@ -1,15 +1,15 @@
 "use client";
 
 import { UserProfile } from "@clerk/nextjs";
-import { Newspaper, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const UserProfilePage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-[var(--paper)]">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200">
+      <header className="border-b border-[var(--line)] bg-[var(--surface)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/explore">
@@ -24,17 +24,16 @@ const UserProfilePage = () => {
 
       {/* Profile Content */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8">
+        <div className="neon-panel rounded-2xl p-8">
           <UserProfile
             appearance={{
               elements: {
                 card: "bg-transparent shadow-none",
-                navbar: "bg-gray-50 rounded-lg",
-                navbarButton: "text-gray-700 hover:bg-white",
-                navbarButtonIcon: "text-gray-500",
+                navbar: "rounded-lg bg-[var(--surface-raised)]",
+                navbarButton: "text-[var(--ink-muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]",
+                navbarButtonIcon: "text-[var(--ink-faint)]",
                 pageScrollBox: "bg-transparent",
-                formButtonPrimary:
-                  "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700",
+                formButtonPrimary: "bg-[var(--neon-blue)] text-[var(--ink)] hover:bg-[var(--neon-blue)]",
               },
             }}
           />

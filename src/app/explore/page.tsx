@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
-import { Loader2, Newspaper, Sparkles } from "lucide-react";
+import { Loader2, Newspaper } from "lucide-react";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 
 import NewsCard from "@/components/NewsCard";
@@ -66,48 +66,28 @@ const HomePage = () => {
         <RedirectToSignIn />
       </SignedOut>
       <SignedIn>
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-          {/* Header with User Profile */}
-
-          {/* Main Content */}
-          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            {/* Category Filter */}
+        <div className="min-h-screen bg-[var(--paper)]">
+          <main className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:py-14">
             <CategoryFilter
               selectedCategory={selectedCategory}
               onCategoryChange={handleCategoryChange}
             />
 
-            {/* Category Title with smooth transition */}
             <div className="mb-6 transition-all duration-300">
-              <h2 className="text-2xl font-bold text-gray-900 capitalize">
+              <p className="font-mono text-xs uppercase tracking-[.18em] text-[var(--neon-blue)]">Your daily signal</p>
+              <h2 className="mt-3 font-display text-4xl font-semibold tracking-[-.04em] text-[var(--ink)] capitalize">
                 {selectedCategory === "general"
                   ? "Latest News"
                   : `${selectedCategory} News`}
               </h2>
-              {/* <p className="text-gray-600">
-                {loading ? (
-                  <span className="flex items-center gap-2">
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Loading {selectedCategory} articles...
-                  </span>
-                ) : (
-                  <>
-                    {articles.length} articles found in{" "}
-                    {selectedCategory === "general"
-                      ? "general"
-                      : selectedCategory}{" "}
-                    category
-                  </>
-                )}
-              </p> */}
             </div>
 
             {/* Loading State */}
             {loading ? (
               <div className="flex items-center justify-center py-20">
                 <div className="text-center">
-                  <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
-                  <p className="text-gray-600">
+                  <Loader2 className="mx-auto mb-4 size-8 animate-spin text-[var(--neon-blue)]" />
+                  <p className="text-[var(--ink-muted)]">
                     Loading {selectedCategory} news...
                   </p>
                 </div>
@@ -137,11 +117,11 @@ const HomePage = () => {
                 {/* Empty State */}
                 {articles.length === 0 && (
                   <div className="text-center py-20 animate-in fade-in-0 duration-500">
-                    <Newspaper className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-                    <h3 className="text-xl font-semibold text-gray-600 mb-2">
+                    <Newspaper className="mx-auto mb-4 h-16 w-16 text-[var(--ink-faint)]" />
+                    <h3 className="mb-2 text-xl font-semibold text-[var(--ink-muted)]">
                       No articles found
                     </h3>
-                    <p className="text-gray-500">
+                    <p className="text-[var(--ink-faint)]">
                       No articles available in the {selectedCategory} category
                       right now
                     </p>
@@ -156,4 +136,10 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default function ExplorePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[var(--paper)]" />}>
+      <HomePage />
+    </Suspense>
+  );
+}

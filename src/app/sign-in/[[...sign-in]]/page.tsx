@@ -1,101 +1,53 @@
 "use client";
 
 import { SignIn } from "@clerk/nextjs";
-import { Newspaper, Sparkles, CheckCircle } from "lucide-react";
+import { ArrowLeft, Check, Clock3, Layers3, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { clerkAppearance } from "@/lib/clerkAppearance";
 
-const SignInPage = () => {
+export default function SignInPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
-      {/* Background Animation */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-40 left-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-2000"></div>
-      </div>
-
-      <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Left Side - Branding & Features */}
-        <div className="text-center lg:text-left">
-          <Link
-            href="/landing"
-            className="inline-flex items-center gap-3 mb-8 group"
-          >
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-              <Newspaper className="w-8 h-8 text-white" />
-            </div>
-            <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              NewsGist
-            </span>
+    <main className="hero-glow flex min-h-[calc(100vh-145px)] items-center justify-center px-5 py-16 sm:px-8">
+      <div className="grid w-full max-w-5xl items-center gap-14 lg:grid-cols-[1fr_auto]">
+        <div className="max-w-lg">
+          <Link href="/" className="mb-8 inline-flex items-center gap-2 text-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--neon-blue)]">
+            <ArrowLeft className="size-4" /> Back to homepage
           </Link>
-
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            Welcome to the Future of
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">
-              News Consumption
-            </span>
-          </h1>
-
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            Join thousands of users who stay informed with AI-powered news
-            summaries from trusted sources worldwide.
-          </p>
-
-          {/* Features List */}
-          <div className="bg-white/60 backdrop-blur-sm p-6 rounded-2xl border border-white/20 shadow-lg">
-            <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-6 h-6 text-blue-600" />
-              <span className="font-semibold text-gray-800 text-lg">
-                What you'll get:
-              </span>
+          <p className="font-mono text-xs uppercase tracking-[.18em] text-[var(--neon-blue)]">Your daily signal</p>
+          <h1 className="mt-4 max-w-md font-display text-5xl font-semibold leading-tight tracking-[-.05em]">Start where the story gets clear.</h1>
+          <p className="mt-5 max-w-md text-lg leading-8 text-[var(--ink-muted)]">NewsGist gives you the context first, so you can decide what deserves your attention.</p>
+          <div className="neon-panel mt-9 max-w-md rounded-2xl p-5">
+            <div className="flex items-center justify-between border-b border-[var(--line)] pb-4">
+              <span className="font-mono text-[10px] uppercase tracking-[.16em] text-[var(--neon-blue)]">Today&apos;s brief</span>
+              <span className="flex items-center gap-1.5 text-xs text-[var(--ink-faint)]"><Clock3 className="size-3.5" /> 4 min</span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {[
-                "AI-powered news summaries",
-                "Real-time updates from 50+ sources",
-                "Personalized news categories",
-                "Mobile-friendly experience",
-                "Advanced search capabilities",
-                "Bookmark favorite articles",
-              ].map((feature, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-3 text-gray-700"
-                >
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-sm font-medium">{feature}</span>
+            <div className="space-y-3 py-4">
+              {["The signal behind the headline", "What changed since yesterday", "The angle worth reading next"].map((item, index) => (
+                <div key={item} className="flex items-center gap-3 text-sm text-[var(--ink-muted)]">
+                  <span className="font-mono text-xs text-[var(--neon-blue)]">0{index + 1}</span>
+                  <span>{item}</span>
                 </div>
               ))}
             </div>
+            <div className="flex items-center gap-4 border-t border-[var(--line)] pt-4 text-xs text-[var(--ink-faint)]">
+              <span className="flex items-center gap-1.5"><Sparkles className="size-3.5 text-[var(--neon-blue)]" /> AI-assisted</span>
+              <span className="flex items-center gap-1.5"><Layers3 className="size-3.5 text-[var(--neon-blue)]" /> Source-aware</span>
+            </div>
+          </div>
+          <div className="mt-7 grid max-w-md grid-cols-3 gap-3 text-center">
+            {["No doomscrolling", "One calm feed", "Your pace"].map((item) => <div key={item} className="border-l border-[var(--line)] px-2 text-xs leading-5 text-[var(--ink-faint)] first:border-l-0">{item}</div>)}
           </div>
         </div>
-
-        {/* Right Side - Sign In Form */}
-        <div className="flex justify-center lg:justify-end">
-          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/20">
-            <SignIn
-              appearance={{
-                elements: {
-                  formButtonPrimary:
-                    "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm normal-case",
-                  card: "bg-transparent shadow-none",
-                  headerTitle: "text-2xl font-bold text-gray-900",
-                  headerSubtitle: "text-gray-600",
-                  socialButtonsBlockButton:
-                    "border-2 border-gray-200 hover:border-gray-300 text-gray-700 hover:bg-gray-50",
-                  formFieldInput:
-                    "border-2 border-gray-200 focus:border-blue-500 rounded-lg",
-                  footerActionLink:
-                    "text-blue-600 hover:text-blue-700 font-semibold",
-                },
-              }}
-              redirectUrl="/"
-            />
-          </div>
+        <div className="neon-panel rounded-2xl p-6 sm:p-8">
+          <SignIn
+            appearance={clerkAppearance}
+            routing="path"
+            path="/sign-in"
+            signUpUrl="/sign-up"
+            fallbackRedirectUrl="/explore"
+          />
         </div>
       </div>
-    </div>
+    </main>
   );
-};
-
-export default SignInPage;
+}

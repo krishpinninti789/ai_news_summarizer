@@ -44,11 +44,11 @@ const NewsSummary = ({ title, content }: NewsSummaryProps) => {
     <Card className="mt-6">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-blue-600" />
+          <Sparkles className="w-5 h-5 text-[var(--neon-blue)]" />
           AI Summary
           <Badge
             variant="outline"
-            className="ml-auto bg-blue-100 text-blue-700"
+            className="ml-auto border-[var(--neon-blue)]/30 bg-[var(--neon-blue)]/10 text-[var(--neon-blue)]"
           >
             <Zap className="w-3 h-3 mr-1" />
             Powered with AI
@@ -58,12 +58,12 @@ const NewsSummary = ({ title, content }: NewsSummaryProps) => {
       <CardContent>
         {!hasGenerated ? (
           <div className="text-center py-6">
-            <div className="bg-gradient-to-r from-blue-50 to-blue-50 p-6 rounded-xl border border-blue-100 mb-4">
-              <Search className="w-12 h-12 text-blue-600 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-800 mb-2">
+            <div className="mb-4 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] p-6">
+              <Search className="mx-auto mb-3 h-12 w-12 text-[var(--neon-blue)]" />
+              <h3 className="mb-2 font-semibold text-[var(--ink)]">
                 Powered with AI
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-sm text-[var(--ink-muted)]">
                 Get an AI-powered summary with real-time web search and
                 citations from trusted sources
               </p>
@@ -71,7 +71,7 @@ const NewsSummary = ({ title, content }: NewsSummaryProps) => {
             <Button
               onClick={generateSummary}
               disabled={isLoading}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="neon-button"
             >
               {isLoading ? (
                 <>
@@ -95,24 +95,24 @@ const NewsSummary = ({ title, content }: NewsSummaryProps) => {
             ) : (
               <>
                 {/* Summary Content */}
-                <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl border border-purple-200">
-                  <div className="whitespace-pre-line text-gray-800 leading-relaxed">
+                  <div className="rounded-xl border border-[var(--neon-blue)]/25 bg-[var(--surface-raised)] p-6 shadow-[0_0_28px_rgba(0,188,255,.06)]">
+                    <div className="whitespace-pre-line leading-relaxed text-[var(--ink)]">
                     {summaryData?.summary}
                   </div>
                 </div>
 
                 {/* Metadata */}
                 {summaryData?.metadata && (
-                  <div className="flex flex-wrap gap-2 text-xs text-gray-500">
-                    <Badge variant="outline" className="bg-white">
+                  <div className="flex flex-wrap gap-2 text-xs text-[var(--ink-faint)]">
+                    <Badge variant="outline">
                       <Search className="w-3 h-3 mr-1" />
                       {summaryData.metadata.numSearchQueries} searches
                     </Badge>
-                    <Badge variant="outline" className="bg-white">
+                    <Badge variant="outline">
                       <Zap className="w-3 h-3 mr-1" />
                       {summaryData.metadata.citationTokens} citation tokens
                     </Badge>
-                    <Badge variant="outline" className="bg-white">
+                    <Badge variant="outline">
                       {summaryData.metadata.provider}
                     </Badge>
                   </div>
@@ -120,8 +120,8 @@ const NewsSummary = ({ title, content }: NewsSummaryProps) => {
 
                 {/* Sources */}
                 {summaryData?.sources && summaryData.sources.length > 0 && (
-                  <div className="border-t border-gray-200 pt-4">
-                    <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                  <div className="border-t border-[var(--line)] pt-4">
+                    <h4 className="mb-3 flex items-center gap-2 font-semibold text-[var(--ink)]">
                       <ExternalLink className="w-4 h-4" />
                       Sources & Citations
                     </h4>
@@ -132,14 +132,14 @@ const NewsSummary = ({ title, content }: NewsSummaryProps) => {
                           href={source.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 p-3 bg-white border border-gray-200 rounded-lg  hover:bg-blue-50 transition-colors group"
+                          className="group flex items-center gap-2 rounded-lg border border-[var(--line)] bg-[var(--surface)] p-3 transition-colors hover:border-[var(--neon-blue)]/50 hover:bg-[var(--surface-raised)]"
                         >
-                          <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-blue-600" />
+                          <ExternalLink className="w-4 h-4 text-[var(--ink-faint)] group-hover:text-[var(--neon-blue)]" />
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-gray-900 group-hover:text-blue-700 truncate">
+                            <p className="truncate text-sm font-medium text-[var(--ink)] group-hover:text-[var(--neon-blue)]">
                               {source.title || "Source"}
                             </p>
-                            <p className="text-xs text-gray-500 truncate">
+                            <p className="truncate text-xs text-[var(--ink-faint)]">
                               {source.url}
                             </p>
                           </div>
@@ -155,7 +155,7 @@ const NewsSummary = ({ title, content }: NewsSummaryProps) => {
                   variant="outline"
                   size="sm"
                   disabled={isLoading}
-                  className="w-full bg-transparent border-blue-200 hover:bg-blue-50"
+                  className="w-full border-[var(--line)] bg-transparent hover:bg-[var(--surface-raised)]"
                 >
                   {isLoading ? (
                     <>

@@ -7,7 +7,7 @@ import { formatDate } from "@/lib/utils";
 
 const NewsCard = ({ article, index, category }: NewsCardProps) => {
   return (
-    <Card className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
+    <Card className="group cursor-pointer overflow-hidden rounded-2xl border-[var(--line)] bg-[var(--surface)] shadow-none transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(26,115,232,.18)]">
       <div className="relative">
         {article.urlToImage ? (
           <img
@@ -19,32 +19,32 @@ const NewsCard = ({ article, index, category }: NewsCardProps) => {
             crossOrigin="anonymous"
           />
         ) : (
-          <div className="w-full h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-            <div className="text-gray-400 text-lg font-medium">No Image</div>
+          <div className="dot-grid flex h-48 w-full items-center justify-center bg-[var(--paper)]">
+            <div className="font-display text-lg font-medium text-[var(--ink-muted)]">No image</div>
           </div>
         )}
-        <Badge className="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white">
+        <Badge className="absolute left-3 top-3 bg-[var(--surface)]/90 text-[var(--ink)] hover:bg-[var(--surface-raised)]">
           {article.source.name}
         </Badge>
       </div>
 
       <CardHeader className="pb-3">
-        <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
+        <div className="mb-2 flex items-center gap-2 text-sm text-[var(--ink-faint)]">
           <Clock className="w-4 h-4" />
           {formatDate(article.publishedAt)}
         </div>
-        <h3 className="font-bold text-lg leading-tight line-clamp-2 group-hover:text-blue-600 transition-colors">
+        <h3 className="line-clamp-2 text-lg font-bold leading-tight transition-colors group-hover:text-[var(--neon-blue)]">
           {article.title}
         </h3>
       </CardHeader>
 
       <CardContent className="pt-0">
-        <p className="text-gray-600 line-clamp-3 mb-4">{article.description}</p>
+        <p className="mb-4 line-clamp-3 text-[var(--ink-muted)]">{article.description}</p>
 
         <div className="flex gap-2">
           <Link
             href={`/news/${index}?category=${category}`}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors text-center"
+            className="neon-button flex-1 rounded-lg px-4 py-2 text-center text-sm font-medium transition-all"
           >
             Read More & Summarize
           </Link>
@@ -52,7 +52,7 @@ const NewsCard = ({ article, index, category }: NewsCardProps) => {
             href={article.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 px-3 py-2 border border-gray-300 hover:border-gray-400 rounded-lg text-sm font-medium transition-colors"
+            className="flex items-center gap-1 rounded-lg border border-[var(--line)] px-3 py-2 text-sm font-medium transition-colors hover:border-[var(--ink)]"
           >
             <ExternalLink className="w-4 h-4" />
           </a>

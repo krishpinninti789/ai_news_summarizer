@@ -79,10 +79,10 @@ export default function NewsDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-[var(--paper)]">
         <div className="text-center">
-          <Newspaper className="w-8 h-8 animate-pulse mx-auto mb-4 text-blue-600" />
-          <p className="text-gray-600">Loading article...</p>
+          <Newspaper className="mx-auto mb-4 h-8 w-8 animate-pulse text-[var(--neon-blue)]" />
+          <p className="text-[var(--ink-muted)]">Loading article...</p>
         </div>
       </div>
     );
@@ -90,12 +90,12 @@ export default function NewsDetailPage() {
 
   if (error || !article) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-[var(--paper)]">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+          <h2 className="mb-2 text-2xl font-bold text-[var(--ink)]">
             {error || "Article not found"}
           </h2>
-          <p className="text-gray-600 mb-4">
+          <p className="mb-4 text-[var(--ink-muted)]">
             The article you're looking for might have been moved or is no longer
             available.
           </p>
@@ -116,41 +116,14 @@ export default function NewsDetailPage() {
         <RedirectToSignIn />
       </SignedOut>
       <SignedIn>
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-          {/* Header */}
-          <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <Button
-                    variant="ghost"
-                    onClick={handleBackClick}
-                    className="hover:bg-blue-50"
-                  >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to{" "}
-                    {currentCategory === "general"
-                      ? "News"
-                      : `${
-                          currentCategory.charAt(0).toUpperCase() +
-                          currentCategory.slice(1)
-                        } News`}
-                  </Button>
-                  <Badge
-                    variant="outline"
-                    className="bg-blue-50 text-blue-700 border-blue-200"
-                  >
-                    {currentCategory.charAt(0).toUpperCase() +
-                      currentCategory.slice(1)}
-                  </Badge>
-                </div>
-              </div>
-            </div>
-          </header>
+        <div className="min-h-screen bg-[var(--paper)]">
 
           {/* Article Content */}
-          <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <article className="bg-white rounded-xl shadow-lg overflow-hidden">
+          <main className="mx-auto max-w-4xl px-5 py-10 sm:px-8">
+            <Button variant="ghost" onClick={handleBackClick} className="mb-6 text-[var(--ink-muted)] hover:bg-[var(--surface-raised)] hover:text-[var(--ink)]">
+              <ArrowLeft className="mr-2 h-4 w-4" /> Back to {currentCategory === "general" ? "News" : `${currentCategory} News`}
+            </Button>
+            <article className="neon-panel overflow-hidden rounded-2xl">
               {/* Article Image */}
               {article.urlToImage && (
                 <div className="relative h-64 md:h-96">
@@ -163,19 +136,19 @@ export default function NewsDetailPage() {
                 </div>
               )}
 
-              <div className="p-6 md:p-8 lg:mt-18">
+              <div className="p-6 md:p-10">
                 {/* Article Meta */}
                 <div className="flex flex-wrap items-center gap-4 mb-6">
-                  <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+                  <Badge className="border-[var(--neon-blue)]/40 bg-[var(--neon-blue)]/10 text-[var(--neon-blue)]">
                     {article.source.name}
                   </Badge>
-                  <div className="flex items-center gap-2 text-gray-500">
+                  <div className="flex items-center gap-2 text-[var(--ink-faint)]">
                     <Clock className="w-4 h-4" />
                     <span className="text-sm">
                       {formatDate(article.publishedAt)}
                     </span>
                   </div>
-                  <Badge variant="outline" className="bg-gray-50 text-gray-700">
+                  <Badge variant="outline">
                     {currentCategory.charAt(0).toUpperCase() +
                       currentCategory.slice(1)}{" "}
                     News
@@ -183,19 +156,19 @@ export default function NewsDetailPage() {
                 </div>
 
                 {/* Article Title */}
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                <h1 className="mb-6 font-display text-3xl font-semibold leading-tight text-[var(--ink)] md:text-5xl">
                   {article.title}
                 </h1>
 
                 {/* Article Description */}
-                <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                <p className="mb-8 text-xl leading-relaxed text-[var(--ink-muted)]">
                   {article.description}
                 </p>
 
                 {/* Article Content */}
                 {article.content && (
                   <div className="prose prose-lg max-w-none mb-8">
-                    <p className="text-gray-800 leading-relaxed">
+                    <p className="leading-relaxed text-[var(--ink-muted)]">
                       {article.content.replace(/\[\+\d+ chars\]$/, "...")}
                     </p>
                   </div>
@@ -207,7 +180,7 @@ export default function NewsDetailPage() {
                     href={article.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                    className="neon-button inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
                     Read Full Article
