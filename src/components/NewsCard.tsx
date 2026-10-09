@@ -1,63 +1,45 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Clock, ExternalLink } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
-import { formatDate } from "@/lib/utils";
+import NewsImage from "@/components/shared/NewsImage";
 
 const NewsCard = ({ article, index, category }: NewsCardProps) => {
   return (
-    <Card className="group cursor-pointer overflow-hidden rounded-2xl border-[var(--line)] bg-[var(--surface)] shadow-none transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(26,115,232,.18)]">
-      <div className="relative">
-        {article.urlToImage ? (
-          <img
-            src={article.urlToImage || "/placeholder.svg"}
-            alt={article.title}
-            width={400}
-            height={200}
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-            crossOrigin="anonymous"
-          />
-        ) : (
-          <div className="dot-grid flex h-48 w-full items-center justify-center bg-[var(--paper)]">
-            <div className="font-display text-lg font-medium text-[var(--ink-muted)]">No image</div>
-          </div>
-        )}
-        <Badge className="absolute left-3 top-3 bg-[var(--surface)]/90 text-[var(--ink)] hover:bg-[var(--surface-raised)]">
-          {article.source.name}
-        </Badge>
+    <Card className="news-card group h-full cursor-pointer overflow-hidden rounded-2xl border-[var(--line)] bg-[var(--surface)] p-0 shadow-none transition-all duration-300">
+      <div className="news-card__media dot-grid">
+        <NewsImage src={article.urlToImage} alt={article.title} />
+        <div className="news-card__media-shade" />
+        <span className="news-card__source">{article.source.name}</span>
       </div>
 
-      <CardHeader className="pb-3">
-        <div className="mb-2 flex items-center gap-2 text-sm text-[var(--ink-faint)]">
-          <Clock className="w-4 h-4" />
-          {formatDate(article.publishedAt)}
-        </div>
-        <h3 className="line-clamp-2 text-lg font-bold leading-tight transition-colors group-hover:text-[var(--neon-blue)]">
+      <div className="news-card__content flex flex-1 flex-col p-5">
+        <h3 className="line-clamp-3 font-display text-[1.2rem] font-semibold leading-[1.18] tracking-[-.025em] text-[var(--ink)] transition-colors group-hover:text-[var(--neon-blue)]">
           {article.title}
         </h3>
-      </CardHeader>
 
-      <CardContent className="pt-0">
-        <p className="mb-4 line-clamp-3 text-[var(--ink-muted)]">{article.description}</p>
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-[var(--ink-muted)]">
+          {article.description}
+        </p>
 
-        <div className="flex gap-2">
+        <div className="mt-auto flex items-center gap-2 pt-6">
           <Link
             href={`/news/${index}?category=${category}`}
-            className="neon-button flex-1 rounded-lg px-4 py-2 text-center text-sm font-medium transition-all"
+            className="neon-button inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-lg px-4 text-sm font-semibold transition-all"
           >
-            Read More & Summarize
+            Read the brief
+            <ArrowUpRight className="size-4" />
           </Link>
           <a
             href={article.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 rounded-lg border border-[var(--line)] px-3 py-2 text-sm font-medium transition-colors hover:border-[var(--ink)]"
+            aria-label={`Open original article from ${article.source.name}`}
+            className="inline-flex size-10 items-center justify-center rounded-lg border border-[var(--line)] text-[var(--ink-muted)] transition-all hover:border-[var(--neon-blue)] hover:bg-[rgba(26,115,232,.1)] hover:text-[var(--ink)]"
           >
-            <ExternalLink className="w-4 h-4" />
+            <ExternalLink className="size-4" />
           </a>
         </div>
-      </CardContent>
+      </div>
     </Card>
   );
 };

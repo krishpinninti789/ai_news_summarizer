@@ -66,7 +66,7 @@ const HomePage = () => {
         <RedirectToSignIn />
       </SignedOut>
       <SignedIn>
-        <div className="min-h-screen bg-[var(--paper)]">
+        <div className="explore-page min-h-screen bg-[var(--paper)]">
           <main className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:py-14">
             <CategoryFilter
               selectedCategory={selectedCategory}
@@ -102,7 +102,7 @@ const HomePage = () => {
                         0,
                         20
                       )}`}
-                      className="animate-in fade-in-0 duration-300"
+                      className="h-full animate-in fade-in-0 duration-300"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
                       <NewsCard
