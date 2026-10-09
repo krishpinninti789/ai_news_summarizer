@@ -3,10 +3,11 @@
 import { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
-import { Loader2, Newspaper } from "lucide-react";
+import { Newspaper } from "lucide-react";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 
 import NewsCard from "@/components/NewsCard";
+import NewsCardShimmer from "@/components/NewsCardShimmer";
 import CategoryFilter from "@/components/CategoryFilter";
 
 const HomePage = () => {
@@ -84,13 +85,14 @@ const HomePage = () => {
 
             {/* Loading State */}
             {loading ? (
-              <div className="flex items-center justify-center py-20">
-                <div className="text-center">
-                  <Loader2 className="mx-auto mb-4 size-8 animate-spin text-[var(--neon-blue)]" />
-                  <p className="text-[var(--ink-muted)]">
-                    Loading {selectedCategory} news...
-                  </p>
-                </div>
+              <div
+                className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+                aria-label={`Loading ${selectedCategory} news`}
+                aria-busy="true"
+              >
+                {Array.from({ length: 6 }, (_, index) => (
+                  <NewsCardShimmer key={`${selectedCategory}-shimmer-${index}`} />
+                ))}
               </div>
             ) : (
               <>
