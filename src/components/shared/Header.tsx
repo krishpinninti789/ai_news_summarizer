@@ -27,7 +27,7 @@ const Header = () => {
             >
               <SignedIn>
                 <Link
-                  className="nav-link neon-button h-12 rounded-full px-4 py-2"
+                  className="nav-link flex justify-center items-center neon-button h-12 rounded-full px-4 py-2"
                   href="/explore"
                 >
                   Explore
